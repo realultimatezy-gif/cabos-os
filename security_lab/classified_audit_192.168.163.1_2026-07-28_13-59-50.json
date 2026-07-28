@@ -1,0 +1,10 @@
+{
+    "metadata": {
+        "tool": "SENTINEL-EDR",
+        "target": "192.168.163.1",
+        "timestamp": "2026-07-28 13:59:50.608533",
+        "classification": "CONFIDENTIAL_SECURITY_AUDIT"
+    },
+    "findings_count": 0,
+    "findings": []
+}

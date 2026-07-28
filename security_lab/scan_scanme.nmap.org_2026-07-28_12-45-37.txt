@@ -1,0 +1,9 @@
+SENTINEL SECURITY REPORT
+Target: scanme.nmap.org
+Date: 2026-07-28 12:45:37.299278
+========================================
+[-] Port   21: Closed/Filtered
+[+] Port   22: OPEN  | Service Info: SSH-2.0-OpenSSH_6.6.1p1 Ubuntu-2ubuntu2.13
+[-] Port   80: Closed/Filtered
+[-] Port  443: Closed/Filtered
+[-] Port 8080: Closed/Filtered
