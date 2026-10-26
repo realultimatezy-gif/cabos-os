@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cabos OS — Sovereign Mobile Ecosystem</title>
-    <meta name="description" content="Cabos OS Mobile Launcher & Ecosystem by Cabos Tech">
-    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkNhYm9zIE9TIiwKICAic2hvcnRfbmFtZSI6ICJDYWJvcyBPUyIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGYxNzJhIiwKICAidGhlbWVfY29sb3IiOiAiIzBmMTcyYSIKZX0=">
+    <title>CAB OS — Cyber African Based Operating System</title>
+    <meta name="description" content="CAB OS Living Ecosystem by Cabos Tech">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkNBQiBPUyIsCiAgInNob3J0X25hbWUiOiAiQ0FCIE9TIiwKICAic3RhcnRfdXJsIjogICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGYxNzJhIiwKICAidGhlbWVfY29sb3IiOiAiIzBmMTcyYSIKZX0=">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -31,95 +31,112 @@
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
 
-    <!-- Top Status Bar -->
-    <header class="w-full px-6 py-3 flex justify-between items-center text-xs text-slate-400 font-mono border-b border-slate-800/60 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
-        <div class="flex items-center space-x-2">
+    <!-- Top Status & Global Language Bar -->
+    <header class="w-full px-6 py-3 flex justify-between items-center text-xs text-slate-400 font-mono border-b border-slate-800/60 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center space-x-3">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="font-bold text-slate-200 tracking-wider">CABOS OS v1.0</span>
+            <span class="font-bold text-emerald-400 tracking-wider">CAB OS</span>
+            <select id="lang-selector" onchange="changeLanguage()" class="bg-slate-950 border border-slate-700 text-emerald-400 text-[10px] rounded-lg px-2 py-1 outline-none font-sans">
+                <option value="en">English (Universal)</option>
+                <option value="pidgin">Naija Pidgin 🇳🇬</option>
+            </select>
         </div>
-        <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
             <span id="system-time">00:00 AM</span>
-            <!-- Profile / Wallet & Settings Button -->
-            <button onclick="openModal('profile-modal')" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-cyan-400 hover:bg-slate-700 transition-colors">
+            <button onclick="openModal('profile-modal')" class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 hover:bg-slate-700 transition-colors">
                 <i data-lucide="user-cog" class="w-3.5 h-3.5"></i>
-                <span class="text-[11px] font-bold">Profile & Wallet</span>
+                <span class="text-[10px] font-bold">Profile & Ecosystem</span>
             </button>
         </div>
     </header>
 
-    <!-- Main Launcher View -->
+    <!-- Main Living Launcher View -->
     <main class="max-w-4xl w-full mx-auto px-4 py-6 flex-1 flex flex-col space-y-6">
         
-        <!-- Header Banner -->
-        <section class="p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 border border-slate-700/50 shadow-2xl relative overflow-hidden">
-            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <!-- Header Banner & Universal Search Bar -->
+        <section class="p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 border border-emerald-500/30 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl"></div>
             <div class="flex justify-between items-start relative z-10">
                 <div>
-                    <h1 class="text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
-                        Cabos Tech Engine
+                    <h1 class="text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400" id="ui-title">
+                        Cyber African Based OS
                     </h1>
-                    <p class="text-xs text-slate-400 mt-1">Sovereign Mobile Ecosystem — cabostech.com.ng</p>
+                    <p class="text-xs text-slate-400 mt-1" id="ui-subtitle">Learn, Build, Interact & Earn — Plant, Seed, Grow & Spread</p>
                 </div>
             </div>
             
-            <!-- Quick Search Bar -->
-            <div class="mt-6 relative">
-                <i data-lucide="search" class="w-5 h-5 absolute left-4 top-3 text-slate-400"></i>
-                <input type="text" placeholder="Search Cabos OS modules, services, OBD codes..." class="w-full bg-slate-950/80 border border-slate-700/70 rounded-2xl pl-12 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+            <!-- Universal AI Search Engine -->
+            <div class="mt-6 relative flex gap-2">
+                <div class="relative flex-1">
+                    <i data-lucide="search" class="w-5 h-5 absolute left-4 top-3 text-slate-400"></i>
+                    <input type="text" id="ui-search" placeholder="Ask AI anything or search Academy tasks, OBD codes, modules..." class="w-full bg-slate-950/80 border border-slate-700/70 rounded-2xl pl-12 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors">
+                </div>
+                <button onclick="executeAiSearch()" class="px-4 py-2.5 bg-emerald-500 text-slate-950 font-bold rounded-2xl text-xs hover:bg-emerald-400 transition-colors flex items-center gap-1.5">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> AI Guide
+                </button>
             </div>
         </section>
 
         <!-- Launcher Application Grid -->
         <section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             
-            <!-- 1. Social Feed -->
+            <!-- 1. Living Feed -->
             <button onclick="openModal('feed-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-2">
-                    <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                    <i data-lucide="sprout" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs font-semibold text-slate-200">Social Feed</span>
-                <span class="text-[10px] text-slate-500">₦1 per Like</span>
+                <span class="text-xs font-semibold text-slate-200">Living Feed</span>
+                <span class="text-[10px] text-slate-500">Reels, Video, Text & Earn</span>
             </button>
 
-            <!-- 2. Groups -->
-            <button onclick="openModal('group-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
+            <!-- 2. Universal Academy (Earn-While-You-Learn) -->
+            <button onclick="openModal('academy-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-2">
+                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold text-slate-200">Universal Academy</span>
+                <span class="text-[10px] text-emerald-400 font-medium">Earn ₦50–₦200 per Task</span>
+            </button>
+
+            <!-- 3. Gallery Vault -->
+            <button onclick="openModal('vault-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-2">
+                    <i data-lucide="folder-tree" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold text-slate-200">Gallery Vault</span>
+                <span class="text-[10px] text-slate-500">Task Ledger & History</span>
+            </button>
+
+            <!-- 4. Creation Studio -->
+            <button onclick="openModal('ai-studio-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-2">
+                    <i data-lucide="cpu" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold text-slate-200">Creation Studio</span>
+                <span class="text-[10px] text-slate-500">Image, Video, App, Web, Game</span>
+            </button>
+
+            <!-- 5. Community Groups -->
+            <button onclick="openModal('group-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-2">
                     <i data-lucide="users" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Groups</span>
-                <span class="text-[10px] text-slate-500">Communities</span>
+                <span class="text-[10px] text-slate-500">Ecosystem Circles</span>
             </button>
 
-            <!-- 3. Dating App -->
+            <!-- 6. Connect Hub -->
             <button onclick="openModal('dating-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-2">
                     <i data-lucide="sparkles" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Connect Hub</span>
-                <span class="text-[10px] text-slate-500">Dating & Social</span>
+                <span class="text-[10px] text-slate-500">Social Discovery</span>
             </button>
 
-            <!-- 4. Academic Session -->
-            <button onclick="openModal('academy-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/80">
-                <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-2">
-                    <i data-lucide="graduation-cap" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold text-slate-200">Academy</span>
-                <span class="text-[10px] text-slate-500">Learning & Skills</span>
-            </button>
-
-            <!-- 5. Studio (AI Video Production) -->
-            <button onclick="openModal('ai-studio-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 hover:bg-slate-800/80">
-                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-2">
-                    <i data-lucide="video" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold text-slate-200">AI Studio</span>
-                <span class="text-[10px] text-slate-500">Media Production</span>
-            </button>
-
-            <!-- 6. Technician Field & Workshop -->
+            <!-- 7. Technician Workshop -->
             <button onclick="openModal('workshop-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2">
                     <i data-lucide="wrench" class="w-6 h-6"></i>
@@ -128,13 +145,13 @@
                 <span class="text-[10px] text-slate-500">OBD & Services</span>
             </button>
 
-            <!-- 7. Market Space -->
+            <!-- 8. Market Space -->
             <button onclick="openModal('market-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-2">
                     <i data-lucide="store" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Market Space</span>
-                <span class="text-[10px] text-slate-500">P2P & Store</span>
+                <span class="text-[10px] text-slate-500">P2P & Exchange</span>
             </button>
 
         </section>
@@ -142,36 +159,32 @@
         <!-- System Status -->
         <section class="p-4 rounded-2xl bg-slate-900/40 border border-slate-800/60 flex items-center justify-between text-xs text-slate-400">
             <div class="flex items-center space-x-3">
-                <div class="p-2 rounded-xl bg-cyan-500/10 text-cyan-400">
-                    <i data-lucide="shield-check" class="w-4 h-4"></i>
+                <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-400">
+                    <i data-lucide="leaf" class="w-4 h-4"></i>
                 </div>
                 <div>
-                    <p class="font-medium text-slate-300">Offline-First PWA Active</p>
-                    <p class="text-[10px] text-slate-500">All modules cached securely on device</p>
+                    <p class="font-medium text-slate-300" id="ui-offline-text">Biological PWA Ecosystem Active</p>
+                    <p class="text-[10px] text-slate-500">Task learning rewards enabled</p>
                 </div>
             </div>
-            <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">READY</span>
+            <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">LIVE</span>
         </section>
 
     </main>
 
-    <!-- App Dock Navigation (Strictly: Home, Editing, Wallet/Profile, Workshop) -->
+    <!-- App Dock Navigation -->
     <nav class="max-w-md w-full mx-auto my-6 px-4 sticky bottom-4 z-40">
         <div class="p-3 rounded-3xl bg-slate-900/90 border border-slate-700/60 backdrop-blur-xl flex justify-around items-center shadow-2xl">
-            <!-- 1. Home / Launcher -->
-            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-3 rounded-2xl text-cyan-400 bg-slate-800/80 hover:bg-slate-700 transition-colors" title="Home Launcher">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-3 rounded-2xl text-emerald-400 bg-slate-800/80 hover:bg-slate-700 transition-colors" title="Home">
                 <i data-lucide="home" class="w-6 h-6"></i>
             </button>
-            <!-- 2. Editing / AI Studio -->
-            <button onclick="openModal('ai-studio-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Editing & AI Studio">
-                <i data-lucide="video" class="w-6 h-6"></i>
+            <button onclick="openModal('ai-studio-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Creation Studio">
+                <i data-lucide="cpu" class="w-6 h-6"></i>
             </button>
-            <!-- 3. Wallet & Profile Settings -->
             <button onclick="openModal('profile-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Profile & Wallet">
                 <i data-lucide="wallet" class="w-6 h-6"></i>
             </button>
-            <!-- 4. Workshop & Diagnostics -->
-            <button onclick="openModal('workshop-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Technician Workshop">
+            <button onclick="openModal('workshop-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Workshop">
                 <i data-lucide="wrench" class="w-6 h-6"></i>
             </button>
         </div>
@@ -179,176 +192,224 @@
 
     <!-- MODALS SECTION -->
 
-    <!-- Profile & Hidden Wallet Modal (With Optional Login/Signup/Verification) -->
+    <!-- Universal Academy Modal (Earn-While-You-Learn) -->
+    <div id="academy-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('academy-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2"><i data-lucide="graduation-cap"></i> CAB Universal Academy</h2>
+            <p class="text-xs text-slate-400 mt-1">Learn anything: Auto Mechatronics, Software Engineering, AI, Business & Trade.</p>
+            
+            <div class="mt-4 space-y-3">
+                <!-- Task Lesson 1 -->
+                <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-bold text-slate-200">1. Laser Alignment & Wheel Camber Basics</p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Faculty: Automotive Mechatronics</p>
+                        </div>
+                        <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">+₦100 Reward</span>
+                    </div>
+                    <button onclick="completeTask('Wheel Alignment Task', 100)" class="w-full mt-3 py-2 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Start Lesson & Practical Task</button>
+                </div>
+
+                <!-- Task Lesson 2 -->
+                <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-xs font-bold text-slate-200">2. Full-Stack PWA Architecture & Git</p>
+                            <p class="text-[10px] text-slate-500 mt-0.5">Faculty: Software Engineering</p>
+                        </div>
+                        <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">+₦150 Reward</span>
+                    </div>
+                    <button onclick="completeTask('PWA Software Architecture Task', 150)" class="w-full mt-3 py-2 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Start Lesson & Practical Task</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Living Feed Modal (With Plant New Post, Growth, Seed & Seed-Like Reward) -->
+    <div id="feed-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('feed-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <div class="flex justify-between items-center">
+                <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2"><i data-lucide="sprout"></i> Living Ecosystem Feed</h2>
+                <button onclick="openPostCreator()" class="text-xs px-3 py-1 bg-emerald-500 text-slate-950 font-bold rounded-full hover:bg-emerald-400 transition-colors flex items-center gap-1">
+                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Plant Post
+                </button>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Liking posts gives ₦1 to creator. Liking comments under posts awards ₦1 to commenter!</p>
+            
+            <!-- Sample Feed Post -->
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800">
+                <div class="flex items-center gap-3 mb-3">
+                    <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-slate-950 text-xs">CB</div>
+                    <div>
+                        <p class="text-xs font-bold text-slate-200">Cabos Tech Workshop</p>
+                        <p class="text-[10px] text-slate-500">Supertracker Laser Alignment Node</p>
+                    </div>
+                </div>
+                <p class="text-xs text-slate-300">Precision wheel alignment complete on Lexus RX350 at City Gate Junction bay.</p>
+                
+                <!-- Interaction Actions -->
+                <div class="mt-3 flex items-center justify-between text-xs pt-2 border-t border-slate-800">
+                    <button onclick="plantGrowth()" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold"><i data-lucide="heart" class="w-4 h-4"></i> Growth (+₦1 to Author)</button>
+                    <button onclick="toggleSeedBox()" class="flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-semibold"><i data-lucide="message-square" class="w-4 h-4"></i> Seed (Comment)</button>
+                    <button onclick="tryAction('spread')" class="flex items-center gap-1 text-indigo-400 hover:text-indigo-300 font-semibold"><i data-lucide="share-2" class="w-4 h-4"></i> Spread</button>
+                </div>
+
+                <!-- Seed Input & Comment List -->
+                <div id="seed-box" class="mt-3 pt-3 border-t border-slate-800/80 space-y-2">
+                    <div class="flex gap-2">
+                        <input type="text" id="seed-input" placeholder="Drop a seed (comment)..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                        <button onclick="addSeedComment()" class="px-3 py-1.5 bg-cyan-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-cyan-400">Seed</button>
+                    </div>
+                    <div id="comments-container" class="space-y-2 pt-2">
+                        <!-- Sample Comment with Like (+₦1) -->
+                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 flex justify-between items-center text-xs">
+                            <div>
+                                <p class="text-[11px] font-bold text-slate-300">Solomon Tech Node</p>
+                                <p class="text-[10px] text-slate-400">Supertracker laser calibration on point! 🎯</p>
+                            </div>
+                            <button onclick="likeComment('Solomon Tech Node')" class="flex items-center gap-1 text-rose-400 hover:text-rose-300 text-[10px] font-bold bg-slate-950 px-2 py-1 rounded-lg border border-slate-800">
+                                <i data-lucide="heart" class="w-3 h-3"></i> Like (+₦1)
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Vault Modal (Ledger & Progress History) -->
+    <div id="vault-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('vault-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="folder-tree"></i> Gallery Vault & Earnings Ledger</h2>
+            <p class="text-xs text-slate-400 mt-1">Trace completed Academy tasks, earned rewards, and diagnostic history logs.</p>
+            <div class="mt-4 space-y-2" id="ledger-history">
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span>Academy Bonus: Wheel Alignment Task</span>
+                    <span class="text-emerald-400 font-mono font-bold">+₦100.00</span>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span>Seed Growth: Comment liked by author</span>
+                    <span class="text-emerald-400 font-mono font-bold">+₦1.00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creation Studio Modal -->
+    <div id="ai-studio-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('ai-studio-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-purple-400 flex items-center gap-2"><i data-lucide="cpu"></i> CAB OS Creation Studio</h2>
+            <p class="text-xs text-slate-400 mt-1">Select creation request mode: Image, Video, App, Web, or Game production.</p>
+            
+            <div class="mt-4 space-y-3">
+                <div class="grid grid-cols-3 gap-2">
+                    <button onclick="setStudioMode('image')" id="mode-image" class="py-2 bg-purple-600 text-[11px] font-bold rounded-xl text-white">Image</button>
+                    <button onclick="setStudioMode('video')" id="mode-video" class="py-2 bg-slate-800 text-[11px] font-bold rounded-xl text-slate-300">Video</button>
+                    <button onclick="setStudioMode('app')" id="mode-app" class="py-2 bg-slate-800 text-[11px] font-bold rounded-xl text-slate-300">Build App</button>
+                    <button onclick="setStudioMode('web')" id="mode-web" class="py-2 bg-slate-800 text-[11px] font-bold rounded-xl text-slate-300">Web</button>
+                    <button onclick="setStudioMode('game')" id="mode-game" class="py-2 bg-slate-800 text-[11px] font-bold rounded-xl text-slate-300">Game</button>
+                </div>
+                
+                <div class="relative">
+                    <textarea id="studio-prompt-input" placeholder="Describe your creative prompt or speak via voice prompt..." class="w-full h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-purple-500"></textarea>
+                    <button onclick="toggleVoicePrompt()" id="mic-btn" class="absolute right-3 bottom-3 p-2 bg-slate-800 rounded-full text-slate-300 hover:text-purple-400 transition-colors" title="Voice Prompt">
+                        <i data-lucide="mic" class="w-4 h-4"></i>
+                    </button>
+                </div>
+
+                <button onclick="runStudioGeneration()" class="w-full py-3 bg-purple-600 text-slate-100 font-bold rounded-xl text-sm hover:bg-purple-500 transition-colors">Execute Creation Request</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile & Wallet Modal -->
     <div id="profile-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('profile-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="user-cog"></i> Profile, Wallet & Settings</h2>
-            <p class="text-xs text-slate-400 mt-1">Manage your account securely. Login or verification is completely optional.</p>
+            <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2"><i data-lucide="user-cog"></i> Profile & Wallet Settings</h2>
+            <p class="text-xs text-slate-400 mt-1">Manage sovereign ecosystem identity. Login/signup is completely optional.</p>
             
-            <!-- Optional Login / Sign Up Section -->
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
-                <div class="flex justify-between items-center">
-                    <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 text-amber-400"></i> Optional Account Access</h3>
-                    <span class="text-[10px] bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded-full border border-amber-500/20">Optional</span>
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <input type="text" placeholder="Phone / Email (Optional)" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
-                    <button onclick="alert('Account session saved locally!')" class="py-2.5 bg-slate-800 text-slate-200 font-bold rounded-xl text-xs hover:bg-slate-700 transition-colors">Sign In / Register</button>
-                </div>
-            </div>
-
-            <!-- Secured Wallet Inside Profile -->
-            <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-slate-950 to-indigo-950 border border-slate-800">
-                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">Secured Wallet Balance</span>
+            <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-slate-950 to-emerald-950 border border-slate-800">
+                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">Secured Ecosystem Balance</span>
                 <div class="flex justify-between items-end mt-1">
                     <span class="text-2xl font-mono font-bold text-emerald-400">₦<span id="wallet-balance">1,250.00</span></span>
                     <button onclick="buyPoints()" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition-colors">Buy Points</button>
                 </div>
             </div>
 
-            <!-- Share Coin / Points Section -->
             <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
-                <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="send" class="w-3.5 h-3.5 text-cyan-400"></i> Share Coins (Family & Friends)</h3>
-                <input type="text" id="recipient-id" placeholder="Recipient Phone or Wallet ID" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
-                <input type="number" id="share-amount" placeholder="Amount to Share (₦)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
-                <button onclick="shareCoins()" class="w-full py-2.5 bg-cyan-500 text-slate-950 font-bold rounded-xl text-xs hover:bg-cyan-400 transition-colors">Send Coin Instantly</button>
+                <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="send" class="w-3.5 h-3.5 text-emerald-400"></i> Spread Coins (Family & Friends)</h3>
+                <input type="text" id="recipient-id" placeholder="Recipient Node ID or Phone" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                <input type="number" id="share-amount" placeholder="Amount (₦)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
+                <button onclick="shareCoins()" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold rounded-xl text-xs hover:bg-emerald-400 transition-colors">Spread Coin Instantly</button>
             </div>
 
-            <!-- Currency Conversion & Bank Withdrawal -->
             <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
                 <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-indigo-400"></i> Convert & Withdraw</h3>
                 <div class="grid grid-cols-2 gap-2">
                     <select class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
-                        <option>Cabos Points (NGN)</option>
+                        <option>CAB Points (NGN)</option>
                         <option>USD (Dollar)</option>
                         <option>USDT (Crypto)</option>
                     </select>
                     <input type="text" placeholder="Bank Account No" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
                 </div>
-                <button onclick="withdrawToBank()" class="w-full py-2.5 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Convert & Withdraw to Bank</button>
+                <button onclick="withdrawToBank()" class="w-full py-2.5 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Convert & Withdraw</button>
             </div>
         </div>
     </div>
 
-    <!-- Workshop Modal -->
-    <div id="workshop-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('workshop-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> Cabos Tech Workshop & OBD</h2>
-            <p class="text-xs text-slate-400 mt-1">Underbody maintenance, laser wheel alignment, and diagnostic scanning.</p>
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
-                <div class="flex justify-between border-b border-slate-800 pb-2">
-                    <span>Supertracker Laser:</span>
-                    <span class="text-emerald-400">Calibrated & Ready</span>
-                </div>
-                <div class="flex justify-between border-b border-slate-800 pb-2">
-                    <span>OBD Scanner:</span>
-                    <span class="text-cyan-400">Toyota/Lexus/Benz Linked</span>
-                </div>
-            </div>
-            <button class="w-full mt-4 py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-amber-400 transition-colors">Launch Diagnostic Session</button>
-        </div>
-    </div>
-
-    <!-- 1. Social Feed Modal -->
-    <div id="feed-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('feed-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2"><i data-lucide="heart-handshake"></i> Monetized Social Feed</h2>
-            <p class="text-xs text-slate-400 mt-1">Earn ₦1 directly to your Cabos Wallet for every genuine like received on your post.</p>
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center font-bold text-slate-950 text-xs">CT</div>
-                    <div>
-                        <p class="text-xs font-bold text-slate-200">Cabos Tech Workshop</p>
-                        <p class="text-[10px] text-slate-500">Supertracker Laser Alignment Update</p>
-                    </div>
-                </div>
-                <p class="text-xs text-slate-300">Precision wheel alignment complete on Lexus RX350 at City Gate Junction bay.</p>
-                <div class="mt-3 flex items-center justify-between text-xs pt-2 border-t border-slate-800">
-                    <button onclick="addLike()" class="flex items-center gap-1.5 text-rose-400 hover:text-rose-300 font-semibold"><i data-lucide="heart" class="w-4 h-4"></i> Like (+₦1.00)</button>
-                    <span class="text-slate-500 text-[10px]"><span id="like-count">142</span> Likes</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 2. Groups Modal -->
+    <!-- Groups, Dating, Workshop, Market Modals -->
     <div id="group-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('group-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-blue-400 flex items-center gap-2"><i data-lucide="users"></i> Community Groups</h2>
-            <p class="text-xs text-slate-400 mt-1">Join specialist technician circles and creator groups.</p>
+            <h2 class="text-xl font-bold text-blue-400 flex items-center gap-2"><i data-lucide="users"></i> Ecosystem Circles</h2>
             <div class="mt-4 space-y-2">
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>Asaba Mechatronics Engineers</span>
-                    <span class="text-cyan-400 font-semibold">Joined</span>
-                </div>
-                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>AI Video Creators Masterclass</span>
+                    <span>Asaba Mechatronics Engineers Circle</span>
                     <span class="text-cyan-400 font-semibold">Join</span>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- 3. Dating Modal -->
     <div id="dating-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('dating-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-rose-400 flex items-center gap-2"><i data-lucide="sparkles"></i> Cabos Connect & Dating Hub</h2>
-            <p class="text-xs text-slate-400 mt-1">Social discovery and meaningful connections.</p>
+            <h2 class="text-xl font-bold text-rose-400 flex items-center gap-2"><i data-lucide="sparkles"></i> CAB Connect Hub</h2>
             <div class="mt-4 text-center py-8 bg-slate-950 rounded-xl border border-slate-800">
                 <i data-lucide="heart" class="w-10 h-10 text-rose-400 mx-auto mb-2 animate-bounce"></i>
-                <p class="text-xs text-slate-300">Discover profiles near your region.</p>
+                <p class="text-xs text-slate-300">Discover active nodes near your region.</p>
             </div>
         </div>
     </div>
 
-    <!-- 4. Academy Modal -->
-    <div id="academy-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div id="workshop-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('academy-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2"><i data-lucide="graduation-cap"></i> Cabos Tech Academy</h2>
-            <p class="text-xs text-slate-400 mt-1">Master Mechatronics, Software Engineering, and AI Video Editing.</p>
-            <div class="mt-4 space-y-2">
-                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>1. Wheel Alignment & Geometry Masterclass</span>
-                    <span class="text-cyan-400 font-semibold">Start</span>
-                </div>
-                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>2. Modern ECU Diagnostics & Scanning</span>
-                    <span class="text-cyan-400 font-semibold">Start</span>
+            <button onclick="closeModal('workshop-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> CAB Tech Workshop & OBD Field</h2>
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Supertracker Laser:</span>
+                    <span class="text-emerald-400">Calibrated & Ready</span>
                 </div>
             </div>
+            <button class="w-full mt-4 py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-amber-400">Launch Diagnostic Session</button>
         </div>
     </div>
 
-    <!-- 5. AI Studio Modal -->
-    <div id="ai-studio-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('ai-studio-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-purple-400 flex items-center gap-2"><i data-lucide="video"></i> AI Video & Media Studio</h2>
-            <p class="text-xs text-slate-400 mt-1">Generate prompt-driven visual assets and cinematic production scripts.</p>
-            <textarea placeholder="Enter cinematic prompt for video creation..." class="w-full mt-4 h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-purple-500"></textarea>
-            <button class="w-full mt-3 py-3 bg-purple-600 text-slate-100 font-bold rounded-xl text-sm hover:bg-purple-500 transition-colors">Generate Scene Script</button>
-        </div>
-    </div>
-
-    <!-- 7. Market Space Modal -->
     <div id="market-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('market-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="store"></i> Cabos Market Space</h2>
-            <p class="text-xs text-slate-400 mt-1">Automotive spare parts, underbody components, tires, and P2P trading.</p>
+            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="store"></i> CAB Market Space</h2>
             <div class="mt-4 space-y-2">
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
                     <span>Supertracker Laser Alignment Hardware</span>
-                    <span class="text-cyan-400 font-semibold">View</span>
-                </div>
-                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>Toyota / Lexus Brake Pad Sets</span>
                     <span class="text-cyan-400 font-semibold">View</span>
                 </div>
             </div>
@@ -379,26 +440,84 @@
         }
 
         let wallet = 1250.00;
-        let likes = 142;
 
-        function addLike() {
-            wallet += 1.00;
-            likes += 1;
+        function updateWalletDisplay() {
             document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
-            document.getElementById('like-count').innerText = likes;
+        }
+
+        function addLedgerEntry(title, amount) {
+            const history = document.getElementById('ledger-history');
+            const item = document.createElement('div');
+            item.className = 'p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs';
+            item.innerHTML = `<span>${title}</span><span class="text-emerald-400 font-mono font-bold">+₦${amount.toFixed(2)}</span>`;
+            history.prepend(item);
+        }
+
+        // Earn-While-You-Learn Task Completion
+        function completeTask(taskName, reward) {
+            wallet += reward;
+            updateWalletDisplay();
+            addLedgerEntry(`Task Completed: ${taskName}`, reward);
+            alert(`Task complete! ₦${reward.toFixed(2)} has been credited to your wallet.`);
+        }
+
+        // Liking Comment (+₦1 to commenter)
+        function likeComment(username) {
+            wallet += 1.00;
+            updateWalletDisplay();
+            addLedgerEntry(`Seed Growth: Liked comment by ${username}`, 1.00);
+            alert(`Comment liked! ₦1.00 credited for comment interaction.`);
+        }
+
+        function plantGrowth() {
+            wallet += 1.00;
+            updateWalletDisplay();
+            addLedgerEntry(`Post Growth (+1)`, 1.00);
+            alert(`Growth registered! ₦1.00 rewarded.`);
+        }
+
+        function addSeedComment() {
+            const input = document.getElementById('seed-input');
+            if(!input.value) return;
+            const container = document.getElementById('comments-container');
+            const newComment = document.createElement('div');
+            newComment.className = 'p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 flex justify-between items-center text-xs';
+            newComment.innerHTML = `
+                <div>
+                    <p class="text-[11px] font-bold text-slate-300">You (Verified Node)</p>
+                    <p class="text-[10px] text-slate-400">${input.value}</p>
+                </div>
+                <button onclick="likeComment('You')" class="flex items-center gap-1 text-rose-400 hover:text-rose-300 text-[10px] font-bold bg-slate-950 px-2 py-1 rounded-lg border border-slate-800">
+                    <i data-lucide="heart" class="w-3 h-3"></i> Like (+₦1)
+                </button>
+            `;
+            container.appendChild(newComment);
+            input.value = '';
+            lucide.createIcons();
+        }
+
+        function executeAiSearch() {
+            const query = document.getElementById('ui-search').value;
+            if(!query) {
+                alert('Please enter a query or question for the AI Guide.');
+                return;
+            }
+            alert(`AI Guide Analyzing: "${query}"... Directing to relevant Academy faculty and diagnostic nodes.`);
+            openModal('academy-modal');
         }
 
         function buyPoints() {
             wallet += 1000.00;
-            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
-            alert('Successfully purchased ₦1,000 points into your wallet!');
+            updateWalletDisplay();
+            addLedgerEntry('Point Purchase', 1000.00);
+            alert('Successfully purchased ₦1,000 points!');
         }
 
         function shareCoins() {
             const recipient = document.getElementById('recipient-id').value;
             const amount = parseFloat(document.getElementById('share-amount').value);
             if(!recipient || !amount || isNaN(amount)) {
-                alert('Please enter a valid recipient ID and amount.');
+                alert('Please enter a valid recipient node ID and amount.');
                 return;
             }
             if(amount > wallet) {
@@ -406,8 +525,8 @@
                 return;
             }
             wallet -= amount;
-            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
-            alert(`Successfully transferred ₦${amount.toFixed(2)} to ${recipient}!`);
+            updateWalletDisplay();
+            alert(`Successfully spread ₦${amount.toFixed(2)} to ${recipient}!`);
         }
 
         function withdrawToBank() {
