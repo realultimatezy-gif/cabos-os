@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cabos OS — Sovereign Mobile Ecosystem</title>
+    <meta name="description" content="Cabos OS Mobile Launcher & Ecosystem by Cabos Tech">
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIkNhYm9zIE9TIiwKICAic2hvcnRfbmFtZSI6ICJDYWJvcyBPUyIsCiAgInN0YXJ0X3VybCI6ICIvIiwKICAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwKICAiYmFja2dyb3VuZF9jb2xvciI6ICIjMGYxNzJhIiwKICAidGhlbWVfY29sb3IiOiAiIzBmMTcyYSIKZX0=">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+        .app-card {
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .app-card:active {
+            transform: scale(0.95);
+        }
+        /* Custom scrollbar for launcher apps */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-cyan-500 selection:text-black">
+
+    <!-- Top Status Bar -->
+    <header class="w-full px-6 pt-4 pb-2 flex justify-between items-center text-xs text-slate-400 font-mono border-b border-slate-800/60 bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+        <div class="flex items-center space-x-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span class="font-bold text-slate-200 tracking-wider">CABOS OS v1.0</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <span id="system-time">00:00 AM</span>
+            <i data-lucide="wifi" class="w-4 h-4 text-slate-300"></i>
+            <i data-lucide="battery-charging" class="w-4 h-4 text-emerald-400"></i>
+        </div>
+    </header>
+
+    <!-- Main Launcher View -->
+    <main class="flex-1 max-w-4xl w-full mx-auto px-4 py-6 flex flex-col justify-between">
+        
+        <!-- Header Banner & Wallet Preview -->
+        <section class="mb-6 p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 border border-slate-700/50 shadow-2xl relative overflow-hidden">
+            <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
+            <div class="flex justify-between items-start relative z-10">
+                <div>
+                    <h1 class="text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
+                        Cabos Tech Engine
+                    </h1>
+                    <p class="text-xs text-slate-400 mt-1">Sovereign Mobile Ecosystem — cabostech.com.ng</p>
+                </div>
+                <div class="text-right bg-slate-950/60 px-4 py-2 rounded-2xl border border-slate-800 backdrop-blur-sm">
+                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">Wallet Balance</span>
+                    <span class="text-lg font-mono font-bold text-emerald-400">₦<span id="wallet-balance">1,250.00</span></span>
+                </div>
+            </div>
+            
+            <!-- Quick Search Bar -->
+            <div class="mt-6 relative">
+                <i data-lucide="search" class="w-5 h-5 absolute left-4 top-3 text-slate-400"></i>
+                <input type="text" placeholder="Search Cabos OS modules, services, OBD codes..." class="w-full bg-slate-950/80 border border-slate-700/70 rounded-2xl pl-12 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors">
+            </div>
+        </section>
+
+        <!-- Launcher Application Grid -->
+        <section class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-4 mb-8">
+            
+            <!-- App 1: OBD Diagnostics -->
+            <button onclick="openModal('diagnostics-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center
