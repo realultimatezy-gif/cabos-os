@@ -33,11 +33,11 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-emerald-500 selection:text-black">
 
-    <!-- Top Status & Global Language Bar -->
+    <!-- Top Status Bar & Universal Language Switcher -->
     <header class="w-full px-6 py-3 flex justify-between items-center text-xs text-slate-400 font-mono border-b border-slate-800/60 bg-slate-900/90 backdrop-blur-md sticky top-0 z-50">
         <div class="flex items-center space-x-3">
             <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span class="font-bold text-emerald-400 tracking-wider">CAB OS</span>
+            <span class="font-bold text-emerald-400 tracking-wider">CAB OS (Living System)</span>
             <select id="lang-selector" onchange="changeLanguage()" class="bg-slate-950 border border-slate-700 text-emerald-400 text-[10px] rounded-lg px-2 py-1 outline-none font-sans">
                 <option value="en">English (Universal)</option>
                 <option value="pidgin">Naija Pidgin 🇳🇬</option>
@@ -47,7 +47,7 @@
             <span id="system-time">00:00 AM</span>
             <button onclick="openModal('profile-modal')" class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-slate-800 border border-slate-700 text-emerald-400 hover:bg-slate-700 transition-colors">
                 <i data-lucide="user-cog" class="w-3.5 h-3.5"></i>
-                <span class="text-[10px] font-bold">Profile & Ecosystem</span>
+                <span class="text-[10px] font-bold">Profile & Wallet</span>
             </button>
         </div>
     </header>
@@ -55,7 +55,7 @@
     <!-- Main Living Launcher View -->
     <main class="max-w-4xl w-full mx-auto px-4 py-6 flex-1 flex flex-col space-y-6">
         
-        <!-- Header Banner & Universal Search Bar -->
+        <!-- Header Banner & Universal AI Search -->
         <section class="p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 border border-emerald-500/30 shadow-2xl relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-emerald-500/10 rounded-full blur-3xl"></div>
             <div class="flex justify-between items-start relative z-10">
@@ -63,19 +63,15 @@
                     <h1 class="text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400" id="ui-title">
                         Cyber African Based OS
                     </h1>
-                    <p class="text-xs text-slate-400 mt-1" id="ui-subtitle">Learn, Build, Interact & Earn — Plant, Seed, Grow & Spread</p>
+                    <p class="text-xs text-slate-400 mt-1" id="ui-subtitle">Proof-of-Value Ecosystem — Learn, Plant, Seed & Earn</p>
                 </div>
             </div>
             
             <!-- Universal AI Search Engine -->
-            <div class="mt-6 relative flex gap-2">
-                <div class="relative flex-1">
-                    <i data-lucide="search" class="w-5 h-5 absolute left-4 top-3 text-slate-400"></i>
-                    <input type="text" id="ui-search" placeholder="Ask AI anything or search Academy tasks, OBD codes, modules..." class="w-full bg-slate-950/80 border border-slate-700/70 rounded-2xl pl-12 pr-4 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors">
-                </div>
-                <button onclick="executeAiSearch()" class="px-4 py-2.5 bg-emerald-500 text-slate-950 font-bold rounded-2xl text-xs hover:bg-emerald-400 transition-colors flex items-center gap-1.5">
-                    <i data-lucide="sparkles" class="w-4 h-4"></i> AI Guide
-                </button>
+            <div class="mt-6 relative">
+                <i data-lucide="sparkles" class="w-5 h-5 absolute left-4 top-3 text-emerald-400"></i>
+                <input type="text" id="ai-search-input" onkeypress="handleAiSearch(event)" placeholder="Ask AI: 'Teach me wheel alignment', 'Fix Lexus ECU code', 'Build PWA'..." class="w-full bg-slate-950/90 border border-emerald-500/40 rounded-2xl pl-12 pr-24 py-2.5 text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-emerald-400 transition-colors">
+                <button onclick="executeAiSearch()" class="absolute right-2 top-2 px-3 py-1 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition-colors">Route AI</button>
             </div>
         </section>
 
@@ -88,16 +84,16 @@
                     <i data-lucide="sprout" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Living Feed</span>
-                <span class="text-[10px] text-slate-500">Reels, Video, Text & Earn</span>
+                <span class="text-[10px] text-slate-500">Reels, Growth & ₦1 Rewards</span>
             </button>
 
-            <!-- 2. Universal Academy (Earn-While-You-Learn) -->
+            <!-- 2. Universal Academy -->
             <button onclick="openModal('academy-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-2">
                     <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Universal Academy</span>
-                <span class="text-[10px] text-emerald-400 font-medium">Earn ₦50–₦200 per Task</span>
+                <span class="text-[10px] text-slate-500">Learn & Earn Money</span>
             </button>
 
             <!-- 3. Gallery Vault -->
@@ -106,7 +102,7 @@
                     <i data-lucide="folder-tree" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Gallery Vault</span>
-                <span class="text-[10px] text-slate-500">Task Ledger & History</span>
+                <span class="text-[10px] text-slate-500">History & Progress</span>
             </button>
 
             <!-- 4. Creation Studio -->
@@ -115,10 +111,10 @@
                     <i data-lucide="cpu" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Creation Studio</span>
-                <span class="text-[10px] text-slate-500">Image, Video, App, Web, Game</span>
+                <span class="text-[10px] text-slate-500">Image, Video, App, Game</span>
             </button>
 
-            <!-- 5. Community Groups -->
+            <!-- 5. Groups -->
             <button onclick="openModal('group-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-blue-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-2">
                     <i data-lucide="users" class="w-6 h-6"></i>
@@ -142,7 +138,7 @@
                     <i data-lucide="wrench" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Workshop</span>
-                <span class="text-[10px] text-slate-500">OBD & Services</span>
+                <span class="text-[10px] text-slate-500">OBD Scanner & Tools</span>
             </button>
 
             <!-- 8. Market Space -->
@@ -164,7 +160,7 @@
                 </div>
                 <div>
                     <p class="font-medium text-slate-300" id="ui-offline-text">Biological PWA Ecosystem Active</p>
-                    <p class="text-[10px] text-slate-500">Task learning rewards enabled</p>
+                    <p class="text-[10px] text-slate-500">Proof-of-Value micro-rewards enabled</p>
                 </div>
             </div>
             <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">LIVE</span>
@@ -192,87 +188,81 @@
 
     <!-- MODALS SECTION -->
 
-    <!-- Universal Academy Modal (Earn-While-You-Learn) -->
+    <!-- Universal Academy Modal (Learn Anything & Earn Money) -->
     <div id="academy-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('academy-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2"><i data-lucide="graduation-cap"></i> CAB Universal Academy</h2>
-            <p class="text-xs text-slate-400 mt-1">Learn anything: Auto Mechatronics, Software Engineering, AI, Business & Trade.</p>
+            <p class="text-xs text-slate-400 mt-1">Learn any skill and earn CAB points/naira upon module completion!</p>
             
             <div class="mt-4 space-y-3">
-                <!-- Task Lesson 1 -->
-                <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <p class="text-xs font-bold text-slate-200">1. Laser Alignment & Wheel Camber Basics</p>
-                            <p class="text-[10px] text-slate-500 mt-0.5">Faculty: Automotive Mechatronics</p>
-                        </div>
-                        <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">+₦100 Reward</span>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <div>
+                        <p class="font-bold text-slate-200">1. Wheel Alignment & Geometry Masterclass</p>
+                        <p class="text-[10px] text-emerald-400">Reward: +₦500.00 Wallet Bonus</p>
                     </div>
-                    <button onclick="completeTask('Wheel Alignment Task', 100)" class="w-full mt-3 py-2 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Start Lesson & Practical Task</button>
+                    <button onclick="completeTask(500, 'Wheel Alignment')" class="px-3 py-1.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-500">Start & Earn</button>
                 </div>
-
-                <!-- Task Lesson 2 -->
-                <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <p class="text-xs font-bold text-slate-200">2. Full-Stack PWA Architecture & Git</p>
-                            <p class="text-[10px] text-slate-500 mt-0.5">Faculty: Software Engineering</p>
-                        </div>
-                        <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full border border-emerald-500/20">+₦150 Reward</span>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <div>
+                        <p class="font-bold text-slate-200">2. Full-Stack Web Dev & PWA Architecture</p>
+                        <p class="text-[10px] text-emerald-400">Reward: +₦1,000.00 Wallet Bonus</p>
                     </div>
-                    <button onclick="completeTask('PWA Software Architecture Task', 150)" class="w-full mt-3 py-2 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Start Lesson & Practical Task</button>
+                    <button onclick="completeTask(1000, 'Web Dev')" class="px-3 py-1.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-500">Start & Earn</button>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <div>
+                        <p class="font-bold text-slate-200">3. AI Media & Video Generative Mastery</p>
+                        <p class="text-[10px] text-emerald-400">Reward: +₦750.00 Wallet Bonus</p>
+                    </div>
+                    <button onclick="completeTask(750, 'AI Media')" class="px-3 py-1.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-500">Start & Earn</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Living Feed Modal (With Plant New Post, Growth, Seed & Seed-Like Reward) -->
+    <!-- Living Feed Modal (Multimedia Uploads + Proof-of-Value Engine) -->
     <div id="feed-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('feed-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
             <div class="flex justify-between items-center">
                 <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2"><i data-lucide="sprout"></i> Living Ecosystem Feed</h2>
-                <button onclick="openPostCreator()" class="text-xs px-3 py-1 bg-emerald-500 text-slate-950 font-bold rounded-full hover:bg-emerald-400 transition-colors flex items-center gap-1">
-                    <i data-lucide="plus" class="w-3.5 h-3.5"></i> Plant Post
-                </button>
+                <button onclick="openUploadModal()" class="px-3 py-1 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400">+ Upload Reel/Media</button>
             </div>
-            <p class="text-xs text-slate-400 mt-1">Liking posts gives ₦1 to creator. Liking comments under posts awards ₦1 to commenter!</p>
+            <p class="text-xs text-slate-400 mt-1">Growth (Like) = ₦1 | Seed (Comment) = Free | Comment Like = ₦1</p>
             
-            <!-- Sample Feed Post -->
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800">
-                <div class="flex items-center gap-3 mb-3">
+            <!-- Feed Post Card -->
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                <div class="flex items-center gap-3">
                     <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-slate-950 text-xs">CB</div>
                     <div>
                         <p class="text-xs font-bold text-slate-200">Cabos Tech Workshop</p>
-                        <p class="text-[10px] text-slate-500">Supertracker Laser Alignment Node</p>
+                        <p class="text-[10px] text-slate-500">Supertracker Laser Alignment Node • #Mechatronics</p>
                     </div>
                 </div>
                 <p class="text-xs text-slate-300">Precision wheel alignment complete on Lexus RX350 at City Gate Junction bay.</p>
                 
-                <!-- Interaction Actions -->
-                <div class="mt-3 flex items-center justify-between text-xs pt-2 border-t border-slate-800">
-                    <button onclick="plantGrowth()" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold"><i data-lucide="heart" class="w-4 h-4"></i> Growth (+₦1 to Author)</button>
-                    <button onclick="toggleSeedBox()" class="flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-semibold"><i data-lucide="message-square" class="w-4 h-4"></i> Seed (Comment)</button>
+                <!-- Action Bar -->
+                <div class="flex items-center justify-between text-xs pt-2 border-t border-slate-800">
+                    <button onclick="growthPost()" class="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold"><i data-lucide="flower" class="w-4 h-4"></i> Growth (+₦1)</button>
+                    <button onclick="toggleCommentBox()" class="flex items-center gap-1 text-cyan-400 hover:text-cyan-300 font-semibold"><i data-lucide="disc" class="w-4 h-4"></i> Seed (Free)</button>
                     <button onclick="tryAction('spread')" class="flex items-center gap-1 text-indigo-400 hover:text-indigo-300 font-semibold"><i data-lucide="share-2" class="w-4 h-4"></i> Spread</button>
+                    <span class="text-slate-500 text-[10px]"><span id="growth-count">142</span> Growth</span>
                 </div>
 
-                <!-- Seed Input & Comment List -->
-                <div id="seed-box" class="mt-3 pt-3 border-t border-slate-800/80 space-y-2">
+                <!-- Seed / Comments Section -->
+                <div id="comment-box" class="hidden pt-3 border-t border-slate-800/60 space-y-2">
                     <div class="flex gap-2">
-                        <input type="text" id="seed-input" placeholder="Drop a seed (comment)..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
-                        <button onclick="addSeedComment()" class="px-3 py-1.5 bg-cyan-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-cyan-400">Seed</button>
+                        <input type="text" id="seed-input" placeholder="Drop a seed comment..." class="flex-1 bg-slate-900 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 outline-none">
+                        <button onclick="postSeedComment()" class="px-3 py-1.5 bg-cyan-500 text-slate-950 font-bold text-xs rounded-xl">Seed</button>
                     </div>
-                    <div id="comments-container" class="space-y-2 pt-2">
-                        <!-- Sample Comment with Like (+₦1) -->
-                        <div class="p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 flex justify-between items-center text-xs">
+                    <div id="comment-list" class="space-y-2 pt-2">
+                        <div class="p-2.5 bg-slate-900/60 rounded-xl flex justify-between items-center text-xs">
                             <div>
-                                <p class="text-[11px] font-bold text-slate-300">Solomon Tech Node</p>
-                                <p class="text-[10px] text-slate-400">Supertracker laser calibration on point! 🎯</p>
+                                <span class="font-bold text-slate-300 block text-[11px]">Sitael Yah:</span>
+                                <span class="text-slate-400 text-[11px]">Clean laser alignment setup boss!</span>
                             </div>
-                            <button onclick="likeComment('Solomon Tech Node')" class="flex items-center gap-1 text-rose-400 hover:text-rose-300 text-[10px] font-bold bg-slate-950 px-2 py-1 rounded-lg border border-slate-800">
-                                <i data-lucide="heart" class="w-3 h-3"></i> Like (+₦1)
-                            </button>
+                            <button onclick="likeComment(this)" class="px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-lg text-[10px] border border-emerald-500/20 hover:bg-emerald-500/20">+₦1 Like</button>
                         </div>
                     </div>
                 </div>
@@ -280,21 +270,20 @@
         </div>
     </div>
 
-    <!-- Gallery Vault Modal (Ledger & Progress History) -->
-    <div id="vault-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal('vault-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="folder-tree"></i> Gallery Vault & Earnings Ledger</h2>
-            <p class="text-xs text-slate-400 mt-1">Trace completed Academy tasks, earned rewards, and diagnostic history logs.</p>
-            <div class="mt-4 space-y-2" id="ledger-history">
-                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>Academy Bonus: Wheel Alignment Task</span>
-                    <span class="text-emerald-400 font-mono font-bold">+₦100.00</span>
+    <!-- Upload Media Modal -->
+    <div id="upload-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
+            <button onclick="closeModal('upload-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2"><i data-lucide="upload-cloud"></i> Upload Ecosystem Media</h2>
+            <p class="text-xs text-slate-400 mt-1">Post Reels, Videos, Images, or Text tagged to your specialty.</p>
+            <div class="mt-4 space-y-3">
+                <input type="text" placeholder="Post Title or Reel Headline..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 outline-none">
+                <textarea placeholder="Write text update, details, or upload description..." class="w-full h-20 bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 outline-none"></textarea>
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" placeholder="#Tags (e.g. #Alignment #AI)" class="bg-slate-950 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
+                    <input type="file" class="bg-slate-950 border border-slate-800 rounded-xl p-1 text-xs text-slate-400">
                 </div>
-                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>Seed Growth: Comment liked by author</span>
-                    <span class="text-emerald-400 font-mono font-bold">+₦1.00</span>
-                </div>
+                <button onclick="publishMedia()" class="w-full py-3 bg-emerald-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-emerald-400">Publish Reel / Post</button>
             </div>
         </div>
     </div>
@@ -304,7 +293,7 @@
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('ai-studio-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h2 class="text-xl font-bold text-purple-400 flex items-center gap-2"><i data-lucide="cpu"></i> CAB OS Creation Studio</h2>
-            <p class="text-xs text-slate-400 mt-1">Select creation request mode: Image, Video, App, Web, or Game production.</p>
+            <p class="text-xs text-slate-400 mt-1">Select request mode: Image, Video, App, Web, or Game production.</p>
             
             <div class="mt-4 space-y-3">
                 <div class="grid grid-cols-3 gap-2">
@@ -316,13 +305,28 @@
                 </div>
                 
                 <div class="relative">
-                    <textarea id="studio-prompt-input" placeholder="Describe your creative prompt or speak via voice prompt..." class="w-full h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-purple-500"></textarea>
-                    <button onclick="toggleVoicePrompt()" id="mic-btn" class="absolute right-3 bottom-3 p-2 bg-slate-800 rounded-full text-slate-300 hover:text-purple-400 transition-colors" title="Voice Prompt">
+                    <textarea id="studio-prompt-input" placeholder="Describe your creative prompt or speak via voice prompt..." class="w-full h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 outline-none focus:border-purple-500"></textarea>
+                    <button onclick="toggleVoicePrompt()" id="mic-btn" class="absolute right-3 bottom-3 p-2 bg-slate-800 rounded-full text-slate-300 hover:text-purple-400" title="Voice Prompt">
                         <i data-lucide="mic" class="w-4 h-4"></i>
                     </button>
                 </div>
 
-                <button onclick="runStudioGeneration()" class="w-full py-3 bg-purple-600 text-slate-100 font-bold rounded-xl text-sm hover:bg-purple-500 transition-colors">Execute Creation Request</button>
+                <button onclick="runStudioGeneration()" class="w-full py-3 bg-purple-600 text-slate-100 font-bold rounded-xl text-sm hover:bg-purple-500">Execute Creation Request</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery Vault Modal -->
+    <div id="vault-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('vault-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="folder-tree"></i> Gallery Vault & History Tree</h2>
+            <p class="text-xs text-slate-400 mt-1">Trace your personal progression, earned rewards, and diagnostic logs over time.</p>
+            <div class="mt-4 space-y-2">
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span>Task Reward: Wheel Alignment Masterclass</span>
+                    <span class="text-emerald-400 font-mono">+₦500.00</span>
+                </div>
             </div>
         </div>
     </div>
@@ -338,46 +342,35 @@
                 <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">Secured Ecosystem Balance</span>
                 <div class="flex justify-between items-end mt-1">
                     <span class="text-2xl font-mono font-bold text-emerald-400">₦<span id="wallet-balance">1,250.00</span></span>
-                    <button onclick="buyPoints()" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition-colors">Buy Points</button>
+                    <button onclick="buyPoints()" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400">Buy Points</button>
                 </div>
             </div>
 
             <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
                 <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="send" class="w-3.5 h-3.5 text-emerald-400"></i> Spread Coins (Family & Friends)</h3>
-                <input type="text" id="recipient-id" placeholder="Recipient Node ID or Phone" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
-                <input type="number" id="share-amount" placeholder="Amount (₦)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-emerald-500">
-                <button onclick="shareCoins()" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold rounded-xl text-xs hover:bg-emerald-400 transition-colors">Spread Coin Instantly</button>
-            </div>
-
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
-                <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-indigo-400"></i> Convert & Withdraw</h3>
-                <div class="grid grid-cols-2 gap-2">
-                    <select class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
-                        <option>CAB Points (NGN)</option>
-                        <option>USD (Dollar)</option>
-                        <option>USDT (Crypto)</option>
-                    </select>
-                    <input type="text" placeholder="Bank Account No" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
-                </div>
-                <button onclick="withdrawToBank()" class="w-full py-2.5 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Convert & Withdraw</button>
+                <input type="text" id="recipient-id" placeholder="Recipient Phone or ID" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 outline-none">
+                <input type="number" id="share-amount" placeholder="Amount (₦)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 outline-none">
+                <button onclick="shareCoins()" class="w-full py-2.5 bg-emerald-500 text-slate-950 font-bold rounded-xl text-xs hover:bg-emerald-400">Spread Coin Instantly</button>
             </div>
         </div>
     </div>
 
-    <!-- Groups, Dating, Workshop, Market Modals -->
+    <!-- Groups Modal -->
     <div id="group-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('group-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h2 class="text-xl font-bold text-blue-400 flex items-center gap-2"><i data-lucide="users"></i> Ecosystem Circles</h2>
+            <p class="text-xs text-slate-400 mt-1">Join specialized creator and technician circles.</p>
             <div class="mt-4 space-y-2">
-                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>Asaba Mechatronics Engineers Circle</span>
-                    <span class="text-cyan-400 font-semibold">Join</span>
+                <div onclick="tryAction('group')" class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs cursor-pointer hover:border-blue-500">
+                    <span>Asaba Mechatronics Circle</span>
+                    <span class="text-cyan-400 font-semibold">Join Node</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Dating Modal -->
     <div id="dating-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('dating-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
@@ -389,27 +382,28 @@
         </div>
     </div>
 
+    <!-- Workshop Modal -->
     <div id="workshop-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('workshop-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> CAB Tech Workshop & OBD Field</h2>
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
+            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> Technician Workshop & OBD</h2>
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 border border-slate-800">
                 <div class="flex justify-between border-b border-slate-800 pb-2">
                     <span>Supertracker Laser:</span>
                     <span class="text-emerald-400">Calibrated & Ready</span>
                 </div>
             </div>
-            <button class="w-full mt-4 py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-amber-400">Launch Diagnostic Session</button>
         </div>
     </div>
 
+    <!-- Market Space Modal -->
     <div id="market-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('market-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="store"></i> CAB Market Space</h2>
             <div class="mt-4 space-y-2">
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                    <span>Supertracker Laser Alignment Hardware</span>
+                    <span>Supertracker Laser Hardware</span>
                     <span class="text-cyan-400 font-semibold">View</span>
                 </div>
             </div>
@@ -431,106 +425,141 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        function openModal(id) {
-            document.getElementById(id).classList.remove('hidden');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
+        function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+        function openUploadModal() { openModal('upload-modal'); }
 
         let wallet = 1250.00;
+        let growth = 142;
 
-        function updateWalletDisplay() {
-            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+        // Universal AI Search Engine Routing
+        function handleAiSearch(e) {
+            if(e.key === 'Enter') executeAiSearch();
+        }
+        function executeAiSearch() {
+            const query = document.getElementById('ai-search-input').value.toLowerCase();
+            if(!query) return;
+
+            if(query.includes('learn') || query.includes('alignment') || query.includes('web') || query.includes('course')) {
+                alert(`AI Engine Routing: Directed to Universal Academy for '${query}'`);
+                openModal('academy-modal');
+            } else if(query.includes('ecu') || query.includes('obd') || query.includes('code') || query.includes('fix')) {
+                alert(`AI Engine Routing: Directed to Workshop & Diagnostics for '${query}'`);
+                openModal('workshop-modal');
+            } else if(query.includes('image') || query.includes('video') || query.includes('app') || query.includes('game')) {
+                alert(`AI Engine Routing: Directed to Creation Studio for '${query}'`);
+                openModal('ai-studio-modal');
+            } else {
+                alert(`AI Engine Result for '${query}': Biological node query verified across ecosystem!`);
+            }
         }
 
-        function addLedgerEntry(title, amount) {
-            const history = document.getElementById('ledger-history');
-            const item = document.createElement('div');
-            item.className = 'p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs';
-            item.innerHTML = `<span>${title}</span><span class="text-emerald-400 font-mono font-bold">+₦${amount.toFixed(2)}</span>`;
-            history.prepend(item);
-        }
-
-        // Earn-While-You-Learn Task Completion
-        function completeTask(taskName, reward) {
+        // Proof-of-Value Economy Logic
+        function completeTask(reward, taskName) {
             wallet += reward;
-            updateWalletDisplay();
-            addLedgerEntry(`Task Completed: ${taskName}`, reward);
-            alert(`Task complete! ₦${reward.toFixed(2)} has been credited to your wallet.`);
+            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+            alert(`Congratulations! You completed '${taskName}' and earned ₦${reward.toFixed(2)} credited to your wallet!`);
         }
 
-        // Liking Comment (+₦1 to commenter)
-        function likeComment(username) {
+        function growthPost() {
             wallet += 1.00;
-            updateWalletDisplay();
-            addLedgerEntry(`Seed Growth: Liked comment by ${username}`, 1.00);
-            alert(`Comment liked! ₦1.00 credited for comment interaction.`);
+            growth += 1;
+            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+            document.getElementById('growth-count').innerText = growth;
+            alert('Growth Action! ₦1.00 earned and added to your ecosystem wallet.');
         }
 
-        function plantGrowth() {
-            wallet += 1.00;
-            updateWalletDisplay();
-            addLedgerEntry(`Post Growth (+1)`, 1.00);
-            alert(`Growth registered! ₦1.00 rewarded.`);
+        function toggleCommentBox() {
+            document.getElementById('comment-box').classList.toggle('hidden');
         }
 
-        function addSeedComment() {
+        function postSeedComment() {
             const input = document.getElementById('seed-input');
             if(!input.value) return;
-            const container = document.getElementById('comments-container');
+            const list = document.getElementById('comment-list');
             const newComment = document.createElement('div');
-            newComment.className = 'p-2.5 rounded-xl bg-slate-900/60 border border-slate-800 flex justify-between items-center text-xs';
+            newComment.className = "p-2.5 bg-slate-900/60 rounded-xl flex justify-between items-center text-xs";
             newComment.innerHTML = `
                 <div>
-                    <p class="text-[11px] font-bold text-slate-300">You (Verified Node)</p>
-                    <p class="text-[10px] text-slate-400">${input.value}</p>
+                    <span class="font-bold text-slate-300 block text-[11px]">You (Node):</span>
+                    <span class="text-slate-400 text-[11px]">${input.value}</span>
                 </div>
-                <button onclick="likeComment('You')" class="flex items-center gap-1 text-rose-400 hover:text-rose-300 text-[10px] font-bold bg-slate-950 px-2 py-1 rounded-lg border border-slate-800">
-                    <i data-lucide="heart" class="w-3 h-3"></i> Like (+₦1)
-                </button>
+                <button onclick="likeComment(this)" class="px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded-lg text-[10px] border border-emerald-500/20 hover:bg-emerald-500/20">+₦1 Like</button>
             `;
-            container.appendChild(newComment);
+            list.prepend(newComment);
             input.value = '';
-            lucide.createIcons();
         }
 
-        function executeAiSearch() {
-            const query = document.getElementById('ui-search').value;
-            if(!query) {
-                alert('Please enter a query or question for the AI Guide.');
-                return;
+        function likeComment(btn) {
+            wallet += 1.00;
+            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+            btn.innerText = "Liked (+₦1 Paid)";
+            btn.classList.add("text-emerald-300");
+            alert('Comment Growth! ₦1.00 credited for liking this comment.');
+        }
+
+        function publishMedia() {
+            alert('Reel/Media published successfully to the Living Feed!');
+            closeModal('upload-modal');
+        }
+
+        // Language Switcher
+        function changeLanguage() {
+            const lang = document.getElementById('lang-selector').value;
+            if(lang === 'pidgin') {
+                document.getElementById('ui-title').innerText = 'Cyber African Based OS (Naija Mode)';
+                document.getElementById('ui-subtitle').innerText = 'Proof-of-Value Ecosystem — Learn, Plant, Seed & Make Money!';
+            } else {
+                document.getElementById('ui-title').innerText = 'Cyber African Based OS';
+                document.getElementById('ui-subtitle').innerText = 'Proof-of-Value Ecosystem — Learn, Plant, Seed & Earn';
             }
-            alert(`AI Guide Analyzing: "${query}"... Directing to relevant Academy faculty and diagnostic nodes.`);
-            openModal('academy-modal');
+        }
+
+        // Creation Studio Mode Switcher
+        let currentStudioMode = 'image';
+        function setStudioMode(mode) {
+            currentStudioMode = mode;
+            ['image', 'video', 'app', 'web', 'game'].forEach(m => {
+                const btn = document.getElementById(`mode-${m}`);
+                btn.className = (m === mode) ? "py-2 bg-purple-600 text-[11px] font-bold rounded-xl text-white" : "py-2 bg-slate-800 text-[11px] font-bold rounded-xl text-slate-300";
+            });
+        }
+
+        let isRecording = false;
+        function toggleVoicePrompt() {
+            isRecording = !isRecording;
+            const micBtn = document.getElementById('mic-btn');
+            const textarea = document.getElementById('studio-prompt-input');
+            if(isRecording) {
+                micBtn.className = "absolute right-3 bottom-3 p-2 bg-rose-600 rounded-full text-white animate-pulse";
+                textarea.placeholder = "Listening to your voice prompt...";
+            } else {
+                micBtn.className = "absolute right-3 bottom-3 p-2 bg-slate-800 rounded-full text-slate-300 hover:text-purple-400";
+                textarea.value = `Voice prompt captured for ${currentStudioMode.toUpperCase()}: Build sovereign module.`;
+            }
+        }
+
+        function runStudioGeneration() {
+            alert(`Creation Studio executed ${currentStudioMode.toUpperCase()} request into Vault!`);
+            closeModal('ai-studio-modal');
         }
 
         function buyPoints() {
             wallet += 1000.00;
-            updateWalletDisplay();
-            addLedgerEntry('Point Purchase', 1000.00);
-            alert('Successfully purchased ₦1,000 points!');
+            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+            alert('Purchased ₦1,000 points!');
         }
 
         function shareCoins() {
             const recipient = document.getElementById('recipient-id').value;
             const amount = parseFloat(document.getElementById('share-amount').value);
-            if(!recipient || !amount || isNaN(amount)) {
-                alert('Please enter a valid recipient node ID and amount.');
-                return;
-            }
-            if(amount > wallet) {
-                alert('Insufficient wallet balance!');
+            if(!recipient || !amount || isNaN(amount) || amount > wallet) {
+                alert('Invalid transfer!');
                 return;
             }
             wallet -= amount;
-            updateWalletDisplay();
-            alert(`Successfully spread ₦${amount.toFixed(2)} to ${recipient}!`);
-        }
-
-        function withdrawToBank() {
-            alert('Withdrawal and currency conversion request initiated successfully!');
+            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+            alert(`Spread ₦${amount.toFixed(2)} to ${recipient}!`);
         }
 
         if ('serviceWorker' in navigator) {
