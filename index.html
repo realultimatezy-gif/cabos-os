@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,15 +41,18 @@
         </div>
         <div class="flex items-center space-x-4">
             <span id="system-time">00:00 AM</span>
-            <i data-lucide="wifi" class="w-4 h-4 text-slate-300"></i>
-            <i data-lucide="battery-charging" class="w-4 h-4 text-emerald-400"></i>
+            <!-- Profile Button (Wallet is hidden inside here) -->
+            <button onclick="openModal('profile-modal')" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-cyan-400 hover:bg-slate-700 transition-colors">
+                <i data-lucide="user" class="w-3.5 h-3.5"></i>
+                <span class="text-[11px] font-bold">Profile</span>
+            </button>
         </div>
     </header>
 
     <!-- Main Launcher View -->
     <main class="max-w-4xl w-full mx-auto px-4 py-6 flex-1 flex flex-col space-y-6">
         
-        <!-- Header Banner & Wallet Preview -->
+        <!-- Header Banner -->
         <section class="p-6 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 border border-slate-700/50 shadow-2xl relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-3xl"></div>
             <div class="flex justify-between items-start relative z-10">
@@ -58,10 +61,6 @@
                         Cabos Tech Engine
                     </h1>
                     <p class="text-xs text-slate-400 mt-1">Sovereign Mobile Ecosystem — cabostech.com.ng</p>
-                </div>
-                <div class="text-right bg-slate-950/60 px-4 py-2 rounded-2xl border border-slate-800 backdrop-blur-sm">
-                    <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">Wallet Balance</span>
-                    <span class="text-lg font-mono font-bold text-emerald-400">₦<span id="wallet-balance">1,250.00</span></span>
                 </div>
             </div>
             
@@ -72,20 +71,11 @@
             </div>
         </section>
 
-        <!-- Launcher Application Grid -->
-        <section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
+        <!-- Launcher Application Grid (Ordered strictly as requested) -->
+        <section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             
-            <!-- App 1: OBD Diagnostics -->
-            <button onclick="openModal('diagnostics-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
-                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2">
-                    <i data-lucide="wrench" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-semibold text-slate-200">OBD Scanner</span>
-                <span class="text-[10px] text-slate-500">Diagnostics</span>
-            </button>
-
-            <!-- App 2: Feed & Monetization -->
-            <button onclick="openModal('feed-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
+            <!-- 1. Social Feed -->
+            <button onclick="openModal('feed-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-emerald-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-2">
                     <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                 </div>
@@ -93,45 +83,63 @@
                 <span class="text-[10px] text-slate-500">₦1 per Like</span>
             </button>
 
-            <!-- App 3: P2P Exchange -->
-            <button onclick="openModal('p2p-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
-                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-2">
-                    <i data-lucide="arrow-left-right" class="w-6 h-6"></i>
+            <!-- 2. Groups -->
+            <button onclick="openModal('group-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-2">
+                    <i data-lucide="users" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs font-semibold text-slate-200">P2P Coin</span>
-                <span class="text-[10px] text-slate-500">Exchange</span>
+                <span class="text-xs font-semibold text-slate-200">Groups</span>
+                <span class="text-[10px] text-slate-500">Communities</span>
             </button>
 
-            <!-- App 4: AI Video Studio -->
-            <button onclick="openModal('ai-studio-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
-                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-2">
-                    <i data-lucide="video" class="w-6 h-6"></i>
+            <!-- 3. Dating App -->
+            <button onclick="openModal('dating-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-rose-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-2">
+                    <i data-lucide="sparkles" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs font-semibold text-slate-200">AI Studio</span>
-                <span class="text-[10px] text-slate-500">Generative</span>
+                <span class="text-xs font-semibold text-slate-200">Connect Hub</span>
+                <span class="text-[10px] text-slate-500">Dating & Social</span>
             </button>
 
-            <!-- App 5: Cabos Academy -->
-            <button onclick="openModal('academy-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
+            <!-- 4. Academic Session -->
+            <button onclick="openModal('academy-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-indigo-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-2">
                     <i data-lucide="graduation-cap" class="w-6 h-6"></i>
                 </div>
                 <span class="text-xs font-semibold text-slate-200">Academy</span>
-                <span class="text-[10px] text-slate-500">Tech & Skills</span>
+                <span class="text-[10px] text-slate-500">Learning & Skills</span>
             </button>
 
-            <!-- App 6: Dating Hub -->
-            <button onclick="openModal('dating-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
-                <div class="w-12 h-12 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 mb-2">
-                    <i data-lucide="sparkles" class="w-6 h-6"></i>
+            <!-- 5. Studio (AI Video Production) -->
+            <button onclick="openModal('ai-studio-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-purple-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-2">
+                    <i data-lucide="video" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs font-semibold text-slate-200">Connect</span>
-                <span class="text-[10px] text-slate-500">Social Hub</span>
+                <span class="text-xs font-semibold text-slate-200">AI Studio</span>
+                <span class="text-[10px] text-slate-500">Media Production</span>
+            </button>
+
+            <!-- 6. Technician Field (OBD Diagnostics) -->
+            <button onclick="openModal('diagnostics-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2">
+                    <i data-lucide="wrench" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold text-slate-200">Technician Field</span>
+                <span class="text-[10px] text-slate-500">OBD Scanner</span>
+            </button>
+
+            <!-- 7. Market Space (P2P / Coin Exchange) -->
+            <button onclick="openModal('market-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
+                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-2">
+                    <i data-lucide="store" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs font-semibold text-slate-200">Market Space</span>
+                <span class="text-[10px] text-slate-500">P2P & Store</span>
             </button>
 
         </section>
 
-        <!-- System Notifications & Active Status -->
+        <!-- System Status -->
         <section class="p-4 rounded-2xl bg-slate-900/40 border border-slate-800/60 flex items-center justify-between text-xs text-slate-400">
             <div class="flex items-center space-x-3">
                 <div class="p-2 rounded-xl bg-cyan-500/10 text-cyan-400">
@@ -139,7 +147,7 @@
                 </div>
                 <div>
                     <p class="font-medium text-slate-300">Offline-First PWA Active</p>
-                    <p class="text-[10px] text-slate-500">All local modules cached on device</p>
+                    <p class="text-[10px] text-slate-500">All modules cached securely on device</p>
                 </div>
             </div>
             <span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 font-mono text-[10px] border border-emerald-500/20">READY</span>
@@ -151,38 +159,60 @@
     <nav class="max-w-md w-full mx-auto my-6 px-4 sticky bottom-4 z-40">
         <div class="p-3 rounded-3xl bg-slate-900/90 border border-slate-700/60 backdrop-blur-xl flex justify-around items-center shadow-2xl">
             <button class="p-3 rounded-2xl text-cyan-400 bg-slate-800/80"><i data-lucide="layout-grid" class="w-6 h-6"></i></button>
-            <button onclick="openModal('diagnostics-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="cpu" class="w-6 h-6"></i></button>
-            <button onclick="openModal('feed-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="wallet" class="w-6 h-6"></i></button>
-            <button onclick="openModal('academy-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="settings" class="w-6 h-6"></i></button>
+            <button onclick="openModal('feed-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="heart-handshake" class="w-6 h-6"></i></button>
+            <button onclick="openModal('market-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="store" class="w-6 h-6"></i></button>
+            <button onclick="openModal('profile-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="user" class="w-6 h-6"></i></button>
         </div>
     </nav>
 
     <!-- MODALS SECTION -->
-    <div id="diagnostics-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('diagnostics-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> OBD-II Auto Scanner</h2>
-            <p class="text-xs text-slate-400 mt-1">Vehicle diagnostic module for Toyota, Lexus, Mercedes-Benz & generic OBD-II adapters.</p>
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
-                <div class="flex justify-between border-b border-slate-800 pb-2">
-                    <span>Adapter Status:</span>
-                    <span class="text-emerald-400">Bluetooth Ready (ELM327)</span>
+
+    <!-- Profile & Hidden Wallet Modal -->
+    <div id="profile-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('profile-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="user-check"></i> User Profile & Wallet</h2>
+            <p class="text-xs text-slate-400 mt-1">Manage your account, fund wallet, share points, and convert currencies.</p>
+            
+            <!-- Hidden Wallet Card Inside Profile -->
+            <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-slate-950 to-indigo-950 border border-slate-800">
+                <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">Secured Wallet Balance</span>
+                <div class="flex justify-between items-end mt-1">
+                    <span class="text-2xl font-mono font-bold text-emerald-400">₦<span id="wallet-balance">1,250.00</span></span>
+                    <button onclick="buyPoints()" class="px-3 py-1.5 bg-emerald-500 text-slate-950 font-bold text-xs rounded-xl hover:bg-emerald-400 transition-colors">Buy Points</button>
                 </div>
-                <div class="flex justify-between border-b border-slate-800 pb-2">
-                    <span>Protocol:</span>
-                    <span class="text-slate-400">ISO 15765-4 (CAN 29bit)</span>
-                </div>
-                <div class="text-amber-400 pt-2">Active Faults: 0 Codes Detected</div>
             </div>
-            <button class="w-full mt-4 py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-amber-400 transition-colors">Start Full System Scan</button>
+
+            <!-- Share Coin / Points Section -->
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="send" class="w-3.5 h-3.5 text-cyan-400"></i> Share Coins (Family & Friends)</h3>
+                <input type="text" id="recipient-id" placeholder="Recipient Phone or Wallet ID" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                <input type="number" id="share-amount" placeholder="Amount to Share (₦)" class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                <button onclick="shareCoins()" class="w-full py-2.5 bg-cyan-500 text-slate-950 font-bold rounded-xl text-xs hover:bg-cyan-400 transition-colors">Send Coin Instantly</button>
+            </div>
+
+            <!-- Currency Conversion & Bank Withdrawal -->
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="arrow-left-right" class="w-3.5 h-3.5 text-indigo-400"></i> Convert & Withdraw</h3>
+                <div class="grid grid-cols-2 gap-2">
+                    <select class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
+                        <option>Cabos Points (NGN)</option>
+                        <option>USD (Dollar)</option>
+                        <option>USDT (Crypto)</option>
+                    </select>
+                    <input type="text" placeholder="Bank Account No" class="bg-slate-900 border border-slate-800 rounded-xl p-2 text-xs text-slate-200">
+                </div>
+                <button onclick="withdrawToBank()" class="w-full py-2.5 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Convert & Withdraw to Bank</button>
+            </div>
         </div>
     </div>
 
+    <!-- 1. Social Feed Modal -->
     <div id="feed-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('feed-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h2 class="text-xl font-bold text-emerald-400 flex items-center gap-2"><i data-lucide="heart-handshake"></i> Monetized Social Feed</h2>
-            <p class="text-xs text-slate-400 mt-1">Earn ₦1 directly to your Cabos Wallet for every genuine like received on your video or tech post.</p>
+            <p class="text-xs text-slate-400 mt-1">Earn ₦1 directly to your Cabos Wallet for every genuine like received on your post.</p>
             <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800">
                 <div class="flex items-center gap-3 mb-3">
                     <div class="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center font-bold text-slate-950 text-xs">CT</div>
@@ -200,34 +230,44 @@
         </div>
     </div>
 
-    <div id="p2p-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <!-- 2. Groups Modal -->
+    <div id="group-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('p2p-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="arrow-left-right"></i> P2P Coin Exchange</h2>
-            <p class="text-xs text-slate-400 mt-1">Instant peer-to-peer wallet transfer and coin exchange.</p>
-            <div class="mt-4 space-y-3">
-                <input type="text" placeholder="Recipient Wallet ID or Phone" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
-                <input type="number" placeholder="Amount (₦)" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
-                <button class="w-full py-3 bg-cyan-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-cyan-400 transition-colors">Transfer Coins Now</button>
+            <button onclick="closeModal('group-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-blue-400 flex items-center gap-2"><i data-lucide="users"></i> Community Groups</h2>
+            <p class="text-xs text-slate-400 mt-1">Join specialist technician circles and creator groups.</p>
+            <div class="mt-4 space-y-2">
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span>Asaba Mechatronics Engineers</span>
+                    <span class="text-cyan-400 font-semibold">Joined</span>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span>AI Video Creators Masterclass</span>
+                    <span class="text-cyan-400 font-semibold">Join</span>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="ai-studio-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <!-- 3. Dating / Connect Modal -->
+    <div id="dating-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('ai-studio-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-purple-400 flex items-center gap-2"><i data-lucide="video"></i> AI Video & Media Studio</h2>
-            <p class="text-xs text-slate-400 mt-1">Generate prompt-driven visual assets, prompt scripts, and media concepts.</p>
-            <textarea placeholder="Enter cinematic prompt for video creation..." class="w-full mt-4 h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-purple-500"></textarea>
-            <button class="w-full mt-3 py-3 bg-purple-600 text-slate-100 font-bold rounded-xl text-sm hover:bg-purple-500 transition-colors">Generate Scene Script</button>
+            <button onclick="closeModal('dating-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-rose-400 flex items-center gap-2"><i data-lucide="sparkles"></i> Cabos Connect & Dating Hub</h2>
+            <p class="text-xs text-slate-400 mt-1">Social discovery and meaningful connections.</p>
+            <div class="mt-4 text-center py-8 bg-slate-950 rounded-xl border border-slate-800">
+                <i data-lucide="heart" class="w-10 h-10 text-rose-400 mx-auto mb-2 animate-bounce"></i>
+                <p class="text-xs text-slate-300">Discover profiles near your region.</p>
+            </div>
         </div>
     </div>
 
+    <!-- 4. Academy Modal -->
     <div id="academy-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('academy-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
             <h2 class="text-xl font-bold text-indigo-400 flex items-center gap-2"><i data-lucide="graduation-cap"></i> Cabos Tech Academy</h2>
-            <p class="text-xs text-slate-400 mt-1">Master Mechatronics, Software Engineering, Diagnostic Scanning, and AI Video Editing.</p>
+            <p class="text-xs text-slate-400 mt-1">Master Mechatronics, Software Engineering, and AI Video Editing.</p>
             <div class="mt-4 space-y-2">
                 <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
                     <span>1. Wheel Alignment & Geometry Masterclass</span>
@@ -241,14 +281,53 @@
         </div>
     </div>
 
-    <div id="dating-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <!-- 5. AI Studio Modal -->
+    <div id="ai-studio-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('dating-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-rose-400 flex items-center gap-2"><i data-lucide="sparkles"></i> Cabos Connect</h2>
-            <p class="text-xs text-slate-400 mt-1">Social discovery and community hub.</p>
-            <div class="mt-4 text-center py-8 bg-slate-950 rounded-xl border border-slate-800">
-                <i data-lucide="users" class="w-10 h-10 text-rose-400 mx-auto mb-2"></i>
-                <p class="text-xs text-slate-300">Community network active for verified users.</p>
+            <button onclick="closeModal('ai-studio-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-purple-400 flex items-center gap-2"><i data-lucide="video"></i> AI Video & Media Studio</h2>
+            <p class="text-xs text-slate-400 mt-1">Generate prompt-driven visual assets and cinematic production scripts.</p>
+            <textarea placeholder="Enter cinematic prompt for video creation..." class="w-full mt-4 h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-purple-500"></textarea>
+            <button class="w-full mt-3 py-3 bg-purple-600 text-slate-100 font-bold rounded-xl text-sm hover:bg-purple-500 transition-colors">Generate Scene Script</button>
+        </div>
+    </div>
+
+    <!-- 6. Technician Field Modal -->
+    <div id="diagnostics-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
+            <button onclick="closeModal('diagnostics-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> Technician Field & OBD Scanner</h2>
+            <p class="text-xs text-slate-400 mt-1">Vehicle diagnostic module for Toyota, Lexus, Mercedes-Benz & generic adapters.</p>
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Adapter Status:</span>
+                    <span class="text-emerald-400">Bluetooth Ready (ELM327)</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Protocol:</span>
+                    <span class="text-slate-400">ISO 15765-4 (CAN 29bit)</span>
+                </div>
+                <div class="text-amber-400 pt-2">Active Faults: 0 Codes Detected</div>
+            </div>
+            <button class="w-full mt-4 py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-amber-400 transition-colors">Start Full System Scan</button>
+        </div>
+    </div>
+
+    <!-- 7. Market Space Modal -->
+    <div id="market-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
+            <button onclick="closeModal('market-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="store"></i> Cabos Market Space</h2>
+            <p class="text-xs text-slate-400 mt-1">Automotive spare parts, underbody components, tires, and P2P trading.</p>
+            <div class="mt-4 space-y-2">
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span>Supertracker Laser Alignment Hardware</span>
+                    <span class="text-cyan-400 font-semibold">View</span>
+                </div>
+                <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                    <span>Toyota / Lexus Brake Pad Sets</span>
+                    <span class="text-cyan-400 font-semibold">View</span>
+                </div>
             </div>
         </div>
     </div>
@@ -284,6 +363,32 @@
             likes += 1;
             document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
             document.getElementById('like-count').innerText = likes;
+        }
+
+        function buyPoints() {
+            wallet += 1000.00;
+            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+            alert('Successfully purchased ₦1,000 points into your wallet!');
+        }
+
+        function shareCoins() {
+            const recipient = document.getElementById('recipient-id').value;
+            const amount = parseFloat(document.getElementById('share-amount').value);
+            if(!recipient || !amount || isNaN(amount)) {
+                alert('Please enter a valid recipient ID and amount.');
+                return;
+            }
+            if(amount > wallet) {
+                alert('Insufficient wallet balance!');
+                return;
+            }
+            wallet -= amount;
+            document.getElementById('wallet-balance').innerText = wallet.toFixed(2);
+            alert(`Successfully transferred ₦${amount.toFixed(2)} to ${recipient}!`);
+        }
+
+        function withdrawToBank() {
+            alert('Withdrawal and currency conversion request initiated successfully!');
         }
 
         if ('serviceWorker' in navigator) {
