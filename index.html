@@ -1,4 +1,4 @@
-<!DOCTYPE html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -41,10 +41,10 @@
         </div>
         <div class="flex items-center space-x-4">
             <span id="system-time">00:00 AM</span>
-            <!-- Profile Button (Wallet is hidden inside here) -->
+            <!-- Profile / Wallet & Settings Button -->
             <button onclick="openModal('profile-modal')" class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800 border border-slate-700 text-cyan-400 hover:bg-slate-700 transition-colors">
-                <i data-lucide="user" class="w-3.5 h-3.5"></i>
-                <span class="text-[11px] font-bold">Profile</span>
+                <i data-lucide="user-cog" class="w-3.5 h-3.5"></i>
+                <span class="text-[11px] font-bold">Profile & Wallet</span>
             </button>
         </div>
     </header>
@@ -71,7 +71,7 @@
             </div>
         </section>
 
-        <!-- Launcher Application Grid (Ordered strictly as requested) -->
+        <!-- Launcher Application Grid -->
         <section class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
             
             <!-- 1. Social Feed -->
@@ -119,16 +119,16 @@
                 <span class="text-[10px] text-slate-500">Media Production</span>
             </button>
 
-            <!-- 6. Technician Field (OBD Diagnostics) -->
-            <button onclick="openModal('diagnostics-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/80">
+            <!-- 6. Technician Field & Workshop -->
+            <button onclick="openModal('workshop-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-amber-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-2">
                     <i data-lucide="wrench" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs font-semibold text-slate-200">Technician Field</span>
-                <span class="text-[10px] text-slate-500">OBD Scanner</span>
+                <span class="text-xs font-semibold text-slate-200">Workshop</span>
+                <span class="text-[10px] text-slate-500">OBD & Services</span>
             </button>
 
-            <!-- 7. Market Space (P2P / Coin Exchange) -->
+            <!-- 7. Market Space -->
             <button onclick="openModal('market-modal')" class="app-card flex flex-col items-center p-4 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-800/80">
                 <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-2">
                     <i data-lucide="store" class="w-6 h-6"></i>
@@ -155,26 +155,50 @@
 
     </main>
 
-    <!-- App Dock Navigation -->
+    <!-- App Dock Navigation (Strictly: Home, Editing, Wallet/Profile, Workshop) -->
     <nav class="max-w-md w-full mx-auto my-6 px-4 sticky bottom-4 z-40">
         <div class="p-3 rounded-3xl bg-slate-900/90 border border-slate-700/60 backdrop-blur-xl flex justify-around items-center shadow-2xl">
-            <button class="p-3 rounded-2xl text-cyan-400 bg-slate-800/80"><i data-lucide="layout-grid" class="w-6 h-6"></i></button>
-            <button onclick="openModal('feed-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="heart-handshake" class="w-6 h-6"></i></button>
-            <button onclick="openModal('market-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="store" class="w-6 h-6"></i></button>
-            <button onclick="openModal('profile-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200"><i data-lucide="user" class="w-6 h-6"></i></button>
+            <!-- 1. Home / Launcher -->
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-3 rounded-2xl text-cyan-400 bg-slate-800/80 hover:bg-slate-700 transition-colors" title="Home Launcher">
+                <i data-lucide="home" class="w-6 h-6"></i>
+            </button>
+            <!-- 2. Editing / AI Studio -->
+            <button onclick="openModal('ai-studio-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Editing & AI Studio">
+                <i data-lucide="video" class="w-6 h-6"></i>
+            </button>
+            <!-- 3. Wallet & Profile Settings -->
+            <button onclick="openModal('profile-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Profile & Wallet">
+                <i data-lucide="wallet" class="w-6 h-6"></i>
+            </button>
+            <!-- 4. Workshop & Diagnostics -->
+            <button onclick="openModal('workshop-modal')" class="p-3 rounded-2xl text-slate-400 hover:text-slate-200 transition-colors" title="Technician Workshop">
+                <i data-lucide="wrench" class="w-6 h-6"></i>
+            </button>
         </div>
     </nav>
 
     <!-- MODALS SECTION -->
 
-    <!-- Profile & Hidden Wallet Modal -->
+    <!-- Profile & Hidden Wallet Modal (With Optional Login/Signup/Verification) -->
     <div id="profile-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('profile-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="user-check"></i> User Profile & Wallet</h2>
-            <p class="text-xs text-slate-400 mt-1">Manage your account, fund wallet, share points, and convert currencies.</p>
+            <h2 class="text-xl font-bold text-cyan-400 flex items-center gap-2"><i data-lucide="user-cog"></i> Profile, Wallet & Settings</h2>
+            <p class="text-xs text-slate-400 mt-1">Manage your account securely. Login or verification is completely optional.</p>
             
-            <!-- Hidden Wallet Card Inside Profile -->
+            <!-- Optional Login / Sign Up Section -->
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5"><i data-lucide="lock" class="w-3.5 h-3.5 text-amber-400"></i> Optional Account Access</h3>
+                    <span class="text-[10px] bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded-full border border-amber-500/20">Optional</span>
+                </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <input type="text" placeholder="Phone / Email (Optional)" class="bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-200 focus:outline-none focus:border-cyan-500">
+                    <button onclick="alert('Account session saved locally!')" class="py-2.5 bg-slate-800 text-slate-200 font-bold rounded-xl text-xs hover:bg-slate-700 transition-colors">Sign In / Register</button>
+                </div>
+            </div>
+
+            <!-- Secured Wallet Inside Profile -->
             <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-slate-950 to-indigo-950 border border-slate-800">
                 <span class="text-[10px] text-slate-400 uppercase font-bold tracking-widest block">Secured Wallet Balance</span>
                 <div class="flex justify-between items-end mt-1">
@@ -204,6 +228,26 @@
                 </div>
                 <button onclick="withdrawToBank()" class="w-full py-2.5 bg-indigo-600 text-slate-100 font-bold rounded-xl text-xs hover:bg-indigo-500 transition-colors">Convert & Withdraw to Bank</button>
             </div>
+        </div>
+    </div>
+
+    <!-- Workshop Modal -->
+    <div id="workshop-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
+            <button onclick="closeModal('workshop-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
+            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> Cabos Tech Workshop & OBD</h2>
+            <p class="text-xs text-slate-400 mt-1">Underbody maintenance, laser wheel alignment, and diagnostic scanning.</p>
+            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span>Supertracker Laser:</span>
+                    <span class="text-emerald-400">Calibrated & Ready</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-2">
+                    <span>OBD Scanner:</span>
+                    <span class="text-cyan-400">Toyota/Lexus/Benz Linked</span>
+                </div>
+            </div>
+            <button class="w-full mt-4 py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-amber-400 transition-colors">Launch Diagnostic Session</button>
         </div>
     </div>
 
@@ -249,7 +293,7 @@
         </div>
     </div>
 
-    <!-- 3. Dating / Connect Modal -->
+    <!-- 3. Dating Modal -->
     <div id="dating-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
         <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
             <button onclick="closeModal('dating-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
@@ -289,27 +333,6 @@
             <p class="text-xs text-slate-400 mt-1">Generate prompt-driven visual assets and cinematic production scripts.</p>
             <textarea placeholder="Enter cinematic prompt for video creation..." class="w-full mt-4 h-24 bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-slate-200 focus:outline-none focus:border-purple-500"></textarea>
             <button class="w-full mt-3 py-3 bg-purple-600 text-slate-100 font-bold rounded-xl text-sm hover:bg-purple-500 transition-colors">Generate Scene Script</button>
-        </div>
-    </div>
-
-    <!-- 6. Technician Field Modal -->
-    <div id="diagnostics-modal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-700 w-full max-w-lg rounded-3xl p-6 relative">
-            <button onclick="closeModal('diagnostics-modal')" class="absolute right-4 top-4 text-slate-400 hover:text-slate-100"><i data-lucide="x" class="w-6 h-6"></i></button>
-            <h2 class="text-xl font-bold text-amber-400 flex items-center gap-2"><i data-lucide="wrench"></i> Technician Field & OBD Scanner</h2>
-            <p class="text-xs text-slate-400 mt-1">Vehicle diagnostic module for Toyota, Lexus, Mercedes-Benz & generic adapters.</p>
-            <div class="mt-4 p-4 rounded-2xl bg-slate-950 font-mono text-xs text-slate-300 space-y-2 border border-slate-800">
-                <div class="flex justify-between border-b border-slate-800 pb-2">
-                    <span>Adapter Status:</span>
-                    <span class="text-emerald-400">Bluetooth Ready (ELM327)</span>
-                </div>
-                <div class="flex justify-between border-b border-slate-800 pb-2">
-                    <span>Protocol:</span>
-                    <span class="text-slate-400">ISO 15765-4 (CAN 29bit)</span>
-                </div>
-                <div class="text-amber-400 pt-2">Active Faults: 0 Codes Detected</div>
-            </div>
-            <button class="w-full mt-4 py-3 bg-amber-500 text-slate-950 font-bold rounded-xl text-sm hover:bg-amber-400 transition-colors">Start Full System Scan</button>
         </div>
     </div>
 
