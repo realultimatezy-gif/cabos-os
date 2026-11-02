@@ -1,0 +1,10 @@
+{
+    "metadata": {
+        "tool": "SENTINEL-EDR",
+        "target": "scanme.nmap.org",
+        "timestamp": "2026-07-28 13:55:12.913479",
+        "classification": "CONFIDENTIAL_SECURITY_AUDIT"
+    },
+    "findings_count": 0,
+    "findings": []
+}

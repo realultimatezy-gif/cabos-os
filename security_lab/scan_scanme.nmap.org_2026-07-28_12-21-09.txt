@@ -1,0 +1,9 @@
+SENTINEL SECURITY REPORT
+Target: scanme.nmap.org
+Date: 2026-07-28 12:21:09.983389
+==============================
+[-] Port 21: Closed/Filtered
+[+] Port 22: OPEN
+[-] Port 80: Closed/Filtered
+[-] Port 443: Closed/Filtered
+[-] Port 8080: Closed/Filtered
